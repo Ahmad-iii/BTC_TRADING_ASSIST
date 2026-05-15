@@ -1,0 +1,259 @@
+
+================================================================
+TAB 2 — INTERFACE
+================================================================
+
+PURPOSE:
+Show what the production-level web application would look like if
+the trading bot were cloud-deployed and offered as a service.
+This is a realistic UI mockup description — not a fantasy. It shows
+what users would see, what they would input, and what they would receive.
+
+SCENARIO:
+"Ahmad's ML Trading Signal Service" —
+where users connect their own exchange accounts and receive automated
+BTC/USDT trading signals or auto-execution via the trained ensemble.
+
+================================================================
+INTERFACE — MAIN DASHBOARD
+================================================================
+
+LAYOUT: Full-width dark dashboard (#0f1117 background)
+Navigation: Sidebar on left | Main content on right
+
+------- SIDEBAR NAVIGATION -------
+Logo: "SignalBot v9" with a small lightning bolt icon
+Menu items (with icons):
+  📊 Dashboard         ← currently active
+  🔔 Signal Feed
+  📈 Performance
+  ⚙️  Settings
+  🔗 Exchange Connect
+  📄 API Documentation
+  ❓ Help
+
+------- TOP HEADER BAR -------
+Left: "Dashboard" breadcrumb
+Right:
+  - Live status indicator: ● LIVE (green pulsing dot)
+  - Current BTC price: $67,241.30  ▲ +1.24%
+  - Clock: 14:32:15 UTC
+  - User avatar + name: "Ahmad K."
+
+================================================================
+INTERFACE — SECTION 1: LIVE SIGNAL PANEL
+================================================================
+
+Heading: "Current Signal"
+
+Large card in the center-top:
+
+  ┌─────────────────────────────────────────────────────────┐
+  │                                                         │
+  │   Next 15-Min Candle Signal                             │
+  │                                                         │
+  │            ▲  LONG                                      │
+  │                                                         │
+  │   Confidence:    ████████░░  80%  (4/5 models agree)   │
+  │   Velocity:      ████████░░  1.4x (recent win rate 60%) │
+  │   Position Size: $1,300  (Tier 3 — equity $3,200-$5k)  │
+  │   Signal Time:   14:30:00 UTC                           │
+  │   Next Update:   14:45:00 UTC  (in 12m 45s)            │
+  │                                                         │
+  │   [  ✓ Auto-Execute  ]    [ ⬇ Download Signal CSV ]    │
+  │                                                         │
+  └─────────────────────────────────────────────────────────┘
+
+Below this — individual model votes (expandable):
+  Model CNN-A1    → LONG   ✓
+  Model CNN-A2    → LONG   ✓
+  Model LSTM-B1   → SHORT  ✗
+  Model Hybrid-C1 → LONG   ✓
+  Model Hybrid-C2 → LONG   ✓
+
+Signal history (last 5 signals):
+  14:15 UTC → SHORT | 80% conf | Won  ✓
+  14:00 UTC → LONG  | 80% conf | Won  ✓
+  13:45 UTC → LONG  | 80% conf | Lost ✗
+  13:30 UTC → SKIP  | 60% conf | —
+  13:15 UTC → SHORT | 100% conf| Won  ✓
+
+================================================================
+INTERFACE — SECTION 2: PERFORMANCE PANEL
+================================================================
+
+Four metric cards in a row:
+
+  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+  │ Equity       │ │ Win Rate     │ │ Max Drawdown │ │ Sharpe Ratio │
+  │ $4,822       │ │ 52.04%       │ │ 8.47%        │ │ 0.0328       │
+  │ +$3,822 gain │ │ 24,900 trades│ │ of peak $5,1k│ │ (per candle) │
+  └──────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
+
+Below: Live equity curve chart
+  - Blue line: equity over backtest period ($1,000 → $4,822)
+  - Toggle buttons: [1D] [1W] [1M] [All]
+  - Hover tooltip: shows equity value and date at cursor
+
+Below: Velocity indicator gauge
+  Current velocity multiplier: 1.4x
+  Circular gauge from 0.3x (red) to 2.0x (green), needle at 1.4x
+  "Based on last 50 trades: 60% win rate"
+
+================================================================
+INTERFACE — SECTION 3: USER INPUT SECTION
+================================================================
+
+Heading: "Your Settings"
+
+Two-column form:
+
+LEFT COLUMN — Exchange Connection:
+  Exchange:       [Binance ▼]  (dropdown: Binance, Bybit, OKX)
+  API Key:        [••••••••••••••••••]  (masked)
+  API Secret:     [••••••••••••••••••]  (masked)
+  [Test Connection]  → shows: ✓ Connected | Balance: $3,241.50 USDT
+
+RIGHT COLUMN — Trading Parameters:
+  Trading Pair:   [BTC/USDT ▼]
+  Mode:
+    ○ Signal Only     (receive signal, execute manually)
+    ● Auto-Execute    (bot places orders automatically)
+    ○ Paper Trading   (simulate without real money)
+  
+  Max Position Cap:  [$2,000 __]  (override tier system if desired)
+  Risk Override:     [Off ▼]      (option to disable velocity multiplier)
+  
+  Notifications:
+    ☑ Email alerts for each signal
+    ☑ Telegram bot notifications
+    ☐ SMS alerts
+
+[Save Settings]  [Reset to Defaults]
+
+================================================================
+INTERFACE — SECTION 4: SIGNAL FEED PAGE
+================================================================
+
+(Separate page accessed from sidebar)
+
+Heading: "Signal Feed — Last 24 Hours"
+
+Table of all signals:
+
+  Time (UTC)  | Signal | Confidence | Velocity | Position | Result | P&L
+  ------------|--------|------------|----------|----------|--------|------
+  14:30       | LONG   | 80%        | 1.4x     | $1,300   | Open   | —
+  14:15       | SHORT  | 80%        | 1.3x     | $1,300   | Won ✓  | +$6.32
+  14:00       | LONG   | 80%        | 1.2x     | $1,300   | Won ✓  | +$9.10
+  13:45       | LONG   | 80%        | 1.1x     | $1,300   | Lost ✗ | -$7.84
+  13:30       | SKIP   | 60%        | —        | —        | Skipped| —
+  13:15       | SHORT  | 100%       | 1.0x     | $1,950   | Won ✓  | +$15.2
+  ...
+
+Filters above table:
+  [All] [Long Only] [Short Only] [Skipped] [Won] [Lost]
+  Date range picker: [2024-01-01] to [2025-02-01]
+  [Export CSV]  [Export JSON]
+
+================================================================
+INTERFACE — SECTION 5: API DOCUMENTATION PAGE
+================================================================
+
+(For users who want to integrate signals into their own systems)
+
+Heading: "REST API — Integrate Signals Into Your System"
+
+API Endpoint cards:
+
+  GET /api/v1/signal/current
+  Returns the current 15-minute signal
+  
+  Response example:
+  {
+    "timestamp": "2025-02-01T14:30:00Z",
+    "pair": "BTCUSDT",
+    "direction": "LONG",
+    "confidence": 0.80,
+    "models_agree": 4,
+    "models_total": 5,
+    "velocity_multiplier": 1.4,
+    "recommended_position": 1300,
+    "tier": 3,
+    "next_signal_at": "2025-02-01T14:45:00Z"
+  }
+
+  GET /api/v1/performance
+  Returns current performance metrics
+  
+  GET /api/v1/signal/history?from=&to=&limit=
+  Returns historical signals with results
+
+Authentication:
+  All requests require: Authorization: Bearer YOUR_API_KEY
+
+Code example (Python):
+  import requests
+  r = requests.get(
+      'https://signalbot-v9.com/api/v1/signal/current',
+      headers={'Authorization': 'Bearer sk-xxxxx'}
+  )
+  signal = r.json()
+  print(signal['direction'])  # 'LONG' or 'SHORT'
+  print(signal['confidence']) # 0.80
+
+Code example (JavaScript):
+  const res = await fetch('https://signalbot-v9.com/api/v1/signal/current', {
+    headers: { 'Authorization': 'Bearer sk-xxxxx' }
+  });
+  const signal = await res.json();
+  console.log(signal.direction);  // 'LONG' or 'SHORT'
+
+Webhook option:
+  Users can register a webhook URL — the system will POST to their
+  URL every time a new signal is generated (every 15 minutes).
+  Webhook payload is identical to /signal/current response.
+
+================================================================
+INTERFACE — HOW IT WOULD WORK IN PRODUCTION
+================================================================
+
+For the website's "How It Works" sub-section under Interface tab:
+
+Step 1: CLOUD DEPLOYMENT
+  The 5 trained models (.pt files) run on a cloud GPU server (e.g., GCP/AWS)
+  A scheduler fires every 15 minutes at :00, :15, :30, :45
+  It fetches the latest BTC/USDT OHLCV data from Binance API (last 97 candles)
+  Runs through the full pipeline: features → scale → sequence → 5 models → vote
+
+Step 2: SIGNAL GENERATION
+  Checks consensus (≥80% agreement → trade, else skip)
+  Applies velocity multiplier from rolling 50-trade window
+  Determines tier-based position size
+  Stores signal in database
+
+Step 3: DELIVERY TO USER
+  Option A (Auto-Execute): Places market order via user's Binance API
+  Option B (Signal Only):  Pushes notification (email/Telegram/SMS)
+  Option C (API):          User's system polls /signal/current endpoint
+  Option D (Webhook):      System pushes to user's server automatically
+
+Step 4: MONITORING
+  All trades logged in real-time
+  Dashboard updates every 15 minutes
+  Performance metrics recalculated after each completed trade
+  Anomaly detection: if drawdown exceeds 15%, pause auto-execution
+
+Latency estimate:
+  Data fetch:    ~200ms  (Binance API)
+  Inference:     ~100ms  (5 models on GPU, chunked batching)
+  Signal store:  ~50ms   (database write)
+  Notification:  ~300ms  (email/Telegram delivery)
+  TOTAL:         ~650ms  from candle close to signal delivery
+
+  "The new candle opens at :15:00. The signal is delivered by :15:00.65.
+  User has ~14 minutes 59 seconds to execute before the candle closes."
+
+================================================================
+END OF TAB 2 — INTERFACE
+================================================================

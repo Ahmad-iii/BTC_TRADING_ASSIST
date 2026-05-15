@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Minimal Profile</title>
-    <meta name="description" content="Simple minimalist profile website." />
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <title>Home</title>
+    <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
+    <div class="container">
+      <div class="box" onclick="location.href='src/animation.html'">Animation</div>
+      <div class="box" onclick="location.href='src/interface.html'">Interface</div>
+      <div class="box" onclick="location.href='src/about.html'">About</div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

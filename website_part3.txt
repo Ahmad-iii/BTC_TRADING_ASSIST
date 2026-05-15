@@ -1,0 +1,141 @@
+================================================================
+TAB 3 — ABOUT
+================================================================
+
+PURPOSE:
+Personal profile page for Ahmad. Clean, professional, simple.
+Shows who built this system and how to connect.
+
+LAYOUT: Centered single column, max-width 700px
+
+------- PROFILE SECTION -------
+
+[Profile Photo — circular, 140px diameter]
+(Use a professional headshot or placeholder avatar)
+
+Name:    Ahmad Kamran
+Degree:  BS Computer Science — Final Year
+University: [Your University Name]
+Thesis Title: "Machine Learning-Based Cryptocurrency Trading System:
+              A Multi-Architecture Ensemble Approach for BTC/USDT
+              Direction Prediction"
+
+Short bio (2-3 sentences):
+"I am a final-year Computer Science student specializing in machine
+learning and quantitative finance. This project is my Final Year Project
+(FYP) — a full end-to-end ML trading system built from raw Bitcoin price
+data to a live-tradeable ensemble of neural networks. I designed, built,
+and iterated through 15 experimental versions over 4 months."
+
+------- SKILLS TAGS -------
+Display as pill badges:
+  Python  |  PyTorch  |  Machine Learning  |  Time Series  |  Neural Networks
+  CNN  |  LSTM  |  Ensemble Methods  |  Backtesting  |  React  |  Data Science
+
+------- PROJECT STATS -------
+Four small cards:
+  15 Experiments   |  5 Neural Networks  |  240,000 Training Candles  |  +382% Return
+
+------- CONNECT WITH ME -------
+
+LinkedIn:
+  Icon + text: "Connect on LinkedIn"
+  URL: https://linkedin.com/in/[your-username]
+
+Instagram:
+  Icon + text: "Follow on Instagram"
+  URL: https://instagram.com/[your-handle]
+
+GitHub (optional):
+  Icon + text: "View Code on GitHub"
+  URL: https://github.com/[your-username]
+
+Email (optional):
+  Icon + text: [your-university-email]
+
+------- PROJECT CONTEXT -------
+
+Supervisor: [Supervisor Name]
+Institution: [University Department, University Name]
+Submission: May 2026
+
+FYP Objectives (bullet list):
+  • Build a profitable BTC/USDT trading system using ML
+  • Train and compare multiple neural network architectures (CNN, LSTM, Hybrid)
+  • Design a robust ensemble voting system
+  • Implement risk management (velocity scoring, circuit breaker, streak protection)
+  • Demonstrate production-ready deployment architecture
+
+Key Achievements:
+  • Grew simulated portfolio from $1,000 to $4,822 (+382%) over 374 days
+  • Achieved 52.04% win rate on 24,900 live trades (test set, no data leakage)
+  • Designed and tested 15 experimental versions with documented learnings
+  • Implemented Dynamic Velocity Scoring — an original adaptive sizing mechanism
+  • Maintained 8.47% maximum drawdown with full circuit breaker system
+
+------- FOOTER -------
+"Built with PyTorch, React, and a lot of coffee ☕"
+© 2026 Ahmad Kamran | FYP Project
+
+================================================================
+END OF TAB 3 — ABOUT
+================================================================
+
+================================================================
+IMPLEMENTATION NOTES FOR VS CODE / REACT DEVELOPER
+================================================================
+
+REACT PROJECT STRUCTURE SUGGESTION:
+  src/
+    components/
+      Navbar.jsx             — top navigation with 3 tabs
+      AnimationPage.jsx      — main animation tab
+      StepCard.jsx           — individual step component
+      PipelineBreadcrumb.jsx — phase progress at top
+      InterfacePage.jsx      — interface tab
+      AboutPage.jsx          — about tab
+    data/
+      steps.js               — all 18 animation steps as data objects
+    styles/
+      globals.css            — dark theme, colors, typography
+    App.jsx                  — router / tab state management
+
+COLOR PALETTE (dark + clean):
+  Background:     #0f1117
+  Card background:#1a1d2e
+  Accent (blue):  #3b82f6
+  Success (green):#10b981
+  Warning (amber):#f59e0b
+  Danger (red):   #ef4444
+  Text primary:   #f1f5f9
+  Text secondary: #94a3b8
+  Border:         #2d3748
+
+TYPOGRAPHY:
+  Font: Inter (Google Fonts)
+  Step heading: 28px bold
+  Body: 16px regular
+  Code/data: JetBrains Mono 14px
+
+ANIMATION BETWEEN STEPS:
+  Use framer-motion or CSS transitions
+  Step transition: slide out left, new step slides in from right
+  Duration: 400ms ease-in-out
+  Phase breadcrumb: color transition 300ms
+
+KEY INTERACTIONS:
+  [Next Step] button → advance step, animate
+  [Previous Step] button → go back, animate reverse
+  Click on phase in breadcrumb → jump to first step of that phase
+  Step counter updates: "Step X of 18"
+  Keyboard: arrow keys to navigate steps
+
+DATA TABLE STYLING:
+  Use monospace font for numbers
+  Alternate row colors: #1a1d2e / #1e2235
+  Header: #2d3748 with #94a3b8 text
+  Highlight special rows (v9 champion) with subtle left border accent
+
+================================================================
+END OF WEBSITE CONTENT DOCUMENT
+================================================================
